@@ -1,5 +1,5 @@
-import sonnet
 from embeddings import get_embedding
+from graphs import Sonnet, D3Graph, MatplotGraph
 
 class Chatbot:
     def __init__(self, qdrant_client):
