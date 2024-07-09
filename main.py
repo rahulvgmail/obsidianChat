@@ -8,8 +8,9 @@ def main():
         print("The specified path does not exist.")
         return
 
-    index = index_vault(vault_path)
-    chatbot = Chatbot(index)
+    print("Indexing vault... This may take a while.")
+    qdrant_client = index_vault(vault_path)
+    chatbot = Chatbot(qdrant_client)
 
     print("Chatbot is ready. Type 'quit' to exit.")
     while True:
