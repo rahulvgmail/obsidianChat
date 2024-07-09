@@ -1,14 +1,15 @@
-import sonnet
 import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
 
-class Sonnet:
+class ChatModel:
     def __init__(self):
-        self.model = sonnet.ChatModel()
+        pass
 
     def generate(self, prompt):
-        return self.model.generate(prompt)
+        # This is a very simple implementation
+        # In a real scenario, you'd want to use a more sophisticated model
+        return f"Here's a simple response to your prompt: {prompt}"
 
 class D3Graph:
     def __init__(self):

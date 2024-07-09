@@ -1,6 +1,5 @@
 qdrant-client
 sentence-transformers
-sonnet
 networkx
 matplotlib
 pyvis
