@@ -21,7 +21,7 @@ def index_vault(vault_path):
                         collection_name="obsidian_vault",
                         points=[
                             {
-                                "id": hash(file_path),
+                                "id": str(hash(file_path)),
                                 "payload": {"file_path": file_path, "content": content},
                                 "vector": embedding,
                             }
