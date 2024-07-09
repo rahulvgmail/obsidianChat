@@ -19,7 +19,7 @@ class Chatbot:
         if not search_result:
             return "I couldn't find any relevant information in your vault."
 
-        context = "\n".join([hit.payload['content'] for hit in search_result])
+        context = "\n".join([hit['payload']['content'] for hit in search_result])
         
         messages = [
             SystemMessage(content="You are an AI assistant that helps users find information in their Obsidian vault. Use the following context to answer the user's question:"),
