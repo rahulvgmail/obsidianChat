@@ -4,7 +4,7 @@ from graphs import Sonnet, D3Graph, MatplotGraph
 class Chatbot:
     def __init__(self, qdrant_client):
         self.client = qdrant_client
-        self.chat_model = sonnet.ChatModel()
+        self.chat_model = Sonnet()
 
     def get_response(self, user_input):
         query_vector = get_embedding(user_input)
