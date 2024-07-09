@@ -4,6 +4,7 @@ matplotlib
 pyvis
 dm-sonnet
 tensorflow
+tf-keras
 langchain
 langchain_community
 anthropic
