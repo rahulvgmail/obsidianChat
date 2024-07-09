@@ -2,6 +2,7 @@ qdrant-client
 networkx
 matplotlib
 pyvis
-openai
 dm-sonnet
 tensorflow
+langchain
+anthropic

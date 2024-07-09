@@ -9,14 +9,14 @@ def main():
         print("The specified path does not exist.")
         return
 
-    openai_api_key = input("Enter your OpenAI API key: ")
-    if not openai_api_key:
-        print("OpenAI API key is required.")
+    anthropic_api_key = input("Enter your Anthropic API key: ")
+    if not anthropic_api_key:
+        print("Anthropic API key is required.")
         return
 
     print("Indexing vault... This may take a while.")
     qdrant_client = index_vault(vault_path)
-    chatbot = Chatbot(qdrant_client, openai_api_key)
+    chatbot = Chatbot(qdrant_client, anthropic_api_key)
 
     print("Chatbot is ready. Type 'quit' to exit.")
     while True:

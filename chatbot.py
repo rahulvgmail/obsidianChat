@@ -1,11 +1,12 @@
-import openai
+from langchain.chat_models import ChatAnthropic
+from langchain.schema import HumanMessage, SystemMessage
 from embeddings import get_embedding
 from graphs import D3Graph, MatplotGraph
 
 class Chatbot:
-    def __init__(self, qdrant_client, openai_api_key):
+    def __init__(self, qdrant_client, anthropic_api_key):
         self.client = qdrant_client
-        openai.api_key = openai_api_key
+        self.chat_model = ChatAnthropic(anthropic_api_key=anthropic_api_key)
 
     def get_response(self, user_input):
         query_vector = get_embedding(user_input)
@@ -20,22 +21,11 @@ class Chatbot:
 
         context = "\n".join([hit.payload['content'] for hit in search_result])
         
-        prompt = f"""
-        You are an AI assistant that helps users find information in their Obsidian vault.
-        Use the following context to answer the user's question:
+        messages = [
+            SystemMessage(content="You are an AI assistant that helps users find information in their Obsidian vault. Use the following context to answer the user's question:"),
+            HumanMessage(content=f"Context:\n{context}\n\nUser question: {user_input}")
+        ]
 
-        {context}
+        response = self.chat_model(messages)
 
-        User question: {user_input}
-        """
-
-        response = openai.Completion.create(
-            engine="text-davinci-002",
-            prompt=prompt,
-            max_tokens=150,
-            n=1,
-            stop=None,
-            temperature=0.7,
-        )
-
-        return response.choices[0].text.strip()
+        return response.content
