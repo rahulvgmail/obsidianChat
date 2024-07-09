@@ -2,15 +2,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
 
-class ChatModel:
-    def __init__(self):
-        pass
-
-    def generate(self, prompt):
-        # This is a very simple implementation
-        # In a real scenario, you'd want to use a more sophisticated model
-        return f"Here's a simple response to your prompt: {prompt}"
-
 class D3Graph:
     def __init__(self):
         self.graph = Network(notebook=True, cdn_resources='remote')

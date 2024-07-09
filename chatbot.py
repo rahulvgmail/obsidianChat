@@ -1,10 +1,11 @@
+import openai
 from embeddings import get_embedding
-from graphs import ChatModel, D3Graph, MatplotGraph
+from graphs import D3Graph, MatplotGraph
 
 class Chatbot:
-    def __init__(self, qdrant_client):
+    def __init__(self, qdrant_client, openai_api_key):
         self.client = qdrant_client
-        self.chat_model = ChatModel()
+        openai.api_key = openai_api_key
 
     def get_response(self, user_input):
         query_vector = get_embedding(user_input)
@@ -28,5 +29,13 @@ class Chatbot:
         User question: {user_input}
         """
 
-        response = self.chat_model.generate(prompt)
-        return response
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=prompt,
+            max_tokens=150,
+            n=1,
+            stop=None,
+            temperature=0.7,
+        )
+
+        return response.choices[0].text.strip()
