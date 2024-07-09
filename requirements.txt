@@ -6,3 +6,4 @@ dm-sonnet
 tensorflow
 langchain
 anthropic
+python-dotenv
