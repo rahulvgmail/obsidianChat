@@ -3,6 +3,7 @@ from indexer import index_vault
 from chatbot import Chatbot
 
 def main():
+    print("Starting the Obsidian vault chatbot...")
     vault_path = input("Enter the path to your Obsidian vault: ")
     if not os.path.exists(vault_path):
         print("The specified path does not exist.")
