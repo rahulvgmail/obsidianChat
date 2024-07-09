@@ -1,4 +1,4 @@
-from langchain.chat_models import ChatAnthropic
+from langchain_community.chat_models import ChatAnthropic
 from langchain.schema import HumanMessage, SystemMessage
 from embeddings import get_embedding
 from graphs import D3Graph, MatplotGraph
