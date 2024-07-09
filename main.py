@@ -1,0 +1,23 @@
+import os
+from indexer import index_vault
+from chatbot import Chatbot
+
+def main():
+    vault_path = input("Enter the path to your Obsidian vault: ")
+    if not os.path.exists(vault_path):
+        print("The specified path does not exist.")
+        return
+
+    index = index_vault(vault_path)
+    chatbot = Chatbot(index)
+
+    print("Chatbot is ready. Type 'quit' to exit.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'quit':
+            break
+        response = chatbot.get_response(user_input)
+        print("Chatbot:", response)
+
+if __name__ == "__main__":
+    main()
