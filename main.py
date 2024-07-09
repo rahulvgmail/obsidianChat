@@ -23,12 +23,24 @@ def main():
     chatbot = Chatbot(qdrant_client, anthropic_api_key)
 
     print("Chatbot is ready. Type 'quit' to exit.")
+    print("For multiline input, start your message and press Enter.")
+    print("Continue typing on new lines. Type '##END' on a new line to finish your input.")
     while True:
-        user_input = input("You: ")
-        if user_input.lower() == 'quit':
+        print("You: ", end="")
+        user_input_lines = []
+        while True:
+            line = input()
+            if line.strip() == "##END":
+                break
+            user_input_lines.append(line)
+        
+        user_input = "\n".join(user_input_lines)
+        
+        if user_input.lower().strip() == 'quit':
             break
-        response = chatbot.get_response(user_input)
-        print("Chatbot:", response)
+        if user_input.strip():
+            response = chatbot.get_response(user_input)
+            print("Chatbot:", response)
 
 if __name__ == "__main__":
     main()
