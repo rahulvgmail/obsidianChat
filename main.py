@@ -2,6 +2,10 @@ import os
 from dotenv import load_dotenv
 from indexer import index_vault
 from chatbot import Chatbot
+import logging
+
+# Add this near the top of your main.py file, after the imports
+logging.getLogger("httpcore").setLevel(logging.WARNING)
 
 def main():
     # Load environment variables from .env file
