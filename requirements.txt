@@ -1,6 +1,7 @@
 qdrant-client
-sentence-transformers
 networkx
 matplotlib
 pyvis
 openai
+dm-sonnet
+tensorflow
